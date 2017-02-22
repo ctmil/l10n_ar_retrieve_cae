@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="account_invoice_form_refund">
+            <field name="name">account.invoice.form.refund</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+		<field name="state" position="before">
+			<button name="invoice_retrieve_cae" type="object"
+				string="Recuperar CAE" 
+				states="draft" />
+		</field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

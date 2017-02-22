@@ -1,0 +1,29 @@
+<openerp>
+	<data>
+
+		<record id="refund_add_invoice" model="ir.ui.view">
+			<field name="name">Agregar facturas</field>
+			<field name="model">refund.add.invoice</field>
+			<field name="arch" type="xml">
+				<form string="Asignar facturas">
+					<group>
+						<field name="journal_id" />
+						<field name="amount" readonly="1" />
+					</group>
+					<field name="lines">
+						<tree string="Facturas" create="false" delete="false" editable="bottom">
+							<field name="invoice_id" string="Factura" readonly="1"/>
+							<field name="supplier_invoice_number" string="Nro Factura Proveedor" readonly="1"/>
+							<field name="date" string="Fecha" readonly="1"/>
+							<field name="original_amount" string="Monto Original" readonly="1"/>
+							<field name="residual" string="Saldo" readonly="1"/>
+							<field name="amount" string="Monto"/>
+						</tree>
+					</field>
+					<button name="confirm_line" type="object" string="OK" /> 
+				</form>
+			</field>
+		</record>
+
+	</data>
+</openerp>
