@@ -28,13 +28,15 @@ class invoice_query_cae(models.TransientModel):
 		r = serv.wsfe_query_invoice(conn.id,self.journal_id.journal_class_id.afip_code,self.invoice_number,self.point_of_sale)
 		#print r
 		#import pdb;pdb.set_trace()
+		fecha_vto = None
 		for key in r.keys():
-			cod_autorizacion = key.get('CodAutorizacion',None)
+			if type(r[key]) == dict:
+				cod_autorizacion = r[key].get('CodAutorizacion',None)
 			if key == 'FchVto':
 				fecha_vto = r['FchVto'][:4] + '-' + r['FchVto'][4:6] + '-' + r['FchVto'][6:9]
 		if cod_autorizacion and fecha_vto:
 			vals = {
-				'afip_cae': cod_autorizacion,
+				'afip_cae': str(cod_autorizacion),
 				'afip_cae_due': fecha_vto		
 				}
 			invoice_id.write(vals)
