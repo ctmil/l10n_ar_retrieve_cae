@@ -32,13 +32,15 @@ class invoice_query_cae(models.TransientModel):
 		for key in r.keys():
 			if type(r[key]) == dict:
 				cod_autorizacion = r[key].get('CodAutorizacion',None)
-			if key == 'FchVto':
-				fecha_vto = r['FchVto'][:4] + '-' + r['FchVto'][4:6] + '-' + r['FchVto'][6:9]
+			fec_vto = r[key].get('FchVto',None)
+			if fec_vto:
+				fecha_vto = fec_vto[:4] + '-' + fec_vto[4:6] + '-' + fec_vto[6:9]
+		import pdb;pdb.set_trace()
 		if cod_autorizacion and fecha_vto:
 			vals = {
 				'afip_cae': str(cod_autorizacion),
 				'afip_cae_due': fecha_vto		
 				}
-			invoice_id.write(vals)
+			return_id = invoice_id.write(vals)
 			return None
 			
