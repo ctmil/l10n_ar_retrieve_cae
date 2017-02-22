@@ -13,14 +13,16 @@ _logger = logging.getLogger(__name__)
 class account_invoice(models.Model):
 	_inherit = 'account.invoice'
 
-	@api.one
+	@api.multi
 	def invoice_retrieve_cae(self):
+		self.ensure_one()
 		if self.journal_id:
 			vals = {
 				'journal_id': self.journal_id.id
 				}
 			wizard_id = self.env['invoice.query.cae'].create(vals)
-	                return {'type': 'ir.actions.act_window',
+	                return {
+				'type': 'ir.actions.act_window',
         	                'name': 'Consultar CAE',
                 	        'res_model': 'invoice.query.cae',
                         	'res_id': wizard_id.id,

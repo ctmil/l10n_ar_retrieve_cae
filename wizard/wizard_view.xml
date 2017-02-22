@@ -8,8 +8,8 @@
 				<form string="Recuperar CAE">
 					<group>
 						<field name="journal_id" readonly="1" />
-						<field name="point_of_sale" />
-						<field name="invoice_number" />
+						<field name="point_of_sale" readonly="1"/>
+						<field name="invoice_number" required="1"/>
 					</group>
 					<button name="execute" type="object" string="OK" /> 
 				</form>
