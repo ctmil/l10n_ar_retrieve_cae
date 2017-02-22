@@ -2,9 +2,9 @@
     'name': 'Factura electronica - Recuuperar CAE',
     'category': 'Sales',
     'version': '0.1',
-    'depends': ['base','account','l10n_ar_invoice_fe'],
+    'depends': ['base','account','l10n_ar_wsafip_fe'],
     'data': [
-	#'wizard/wizard_view.xml',
+	'wizard/wizard_view.xml',
 	'account_view.xml',
     ],
     'demo': [
